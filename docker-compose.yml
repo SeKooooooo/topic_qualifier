@@ -6,15 +6,13 @@ services:
             - '5000:5000'
         volumes:
             - ./app/uploads:/app/uploads
-            - ./app/model:/app/model
         environment:
             - FLASK_ENV=development
-            - USE_SAFETENSORS=True # Добавляем переменную окружения
+            - USE_SAFETENSORS=True
         deploy:
             resources:
                 limits:
-                    memory: 4G # Увеличиваем память для BERT
-        shm_size: 2gb
+                    memory: 4G
         restart: unless-stopped
 
         # Опционально: можно добавить Nginx для продакшена

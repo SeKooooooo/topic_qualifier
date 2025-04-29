@@ -9,8 +9,7 @@ class TextClassifier:
     def __init__(self, model_path):
         self.model = AutoModelForSequenceClassification.from_pretrained(HF_MODEL_NAME)
         self.tokenizer = AutoTokenizer.from_pretrained(HF_MODEL_NAME)
-        self.labels = ['Бывший СССР','Интернет и СМИ','Культура','Мир','Наука и техника','Россия', 'Спорт', 'Экономика' 
-               ]  # Замените на свои категории
+        self.labels = ['Бывший СССР','Интернет и СМИ','Культура','Мир','Наука и техника','Россия', 'Спорт', 'Экономика' ]
 
     def predict(self, text):
         inputs = self.tokenizer(text, return_tensors="pt", truncation=True, max_length=512)

@@ -17,8 +17,6 @@ COPY app/ .
 # Создаем необходимые папки
 RUN mkdir -p /app/uploads 
 
-COPY app/model /app/model
-
 ENV HF_HOME=/app/cache
 ENV TRANSFORMERS_CACHE=/app/cache
 
