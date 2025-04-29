@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Классификатор текста</title>
+        <style>
+            body {
+                font-family: Arial;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .result {
+                margin-top: 20px;
+                padding: 15px;
+                background: #f5f5f5;
+            }
+            .confidence {
+                font-weight: bold;
+                color: #2e7d32;
+            }
+            .text-preview {
+                max-height: 200px;
+                overflow-y: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Классификатор текста</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".txt,.csv" required />
+            <button type="submit">Анализировать текст</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Результат анализа</h2>
+            <p><strong>Файл:</strong> {{ filename }}</p>
+
+            <div class="text-preview">
+                <h3>Текст:</h3>
+                <p>{{ text }}</p>
+            </div>
+
+            <h3>Категория:</h3>
+            <p>
+                {{ result.label }}
+                <span class="confidence">(вероятность: {{ result.confidence }})</span>
+            </p>
+        </div>
+        {% endif %}
+    </body>
+</html>
